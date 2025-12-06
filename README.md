@@ -1,64 +1,103 @@
-# template
+# Template — Secure Project Blueprint
 
-This project is used to create the standard Github Standard and can be used for any future github project(s)
+![Build](https://github.com/RockRunner007/template/actions/workflows/test-and-build.yml/badge.svg)
+![CodeQL](https://github.com/RockRunner007/template/actions/workflows/codeql-analysis.yml/badge.svg)
+![Dependabot](https://img.shields.io/badge/dependabot-enabled-blue.svg)
+![License](https://img.shields.io/github/license/RockRunner007/template)
 
-## Project Default
+A concise starter template for new services with security, docs, and CI best-practices baked in.
 
-- "_static": Diagram / Threat model
-- "_static/runbooks": Runbooks for the project
-- artifacts: any files used for testing or build results
-- example: Example uses cases of the gitlab project
-- prompts: any prompts used for the project
-- src: source code for the project
-- tst: any tests related to the project
-- .gitignore: any file that should not be included in source control
-- codeowners: specific owners of file type, folders, and more
-- LICENSE: Copyright information for the project
+Why this repo
+- Provides a consistent project layout so teams can start small and scale safely.
+- Includes placeholders for security scans, runbooks, and automation so security becomes part of the workflow.
 
-Optional:
-- .npmignore: any file that should not be included in a package file
-- .prettierignore: any file that should not be reformatted
-- .prettierrc.json: prettier configuration
-- .terraform-docs.yaml: terraform documentation
-- sonar-project: sonarcloud project configuration
+Quick structure
+- `_static/` — diagrams, threat models, deployment docs
+- `docs/runbooks/` — operational runbooks (deploy, rollback, incident response)
+- `prompts/` — AI prompts and project context for automated helpers
+- `src/` — source code
+- `tst/` — unit, integration, and security-focused tests (this repo uses `tst`)
+- `infrastructure/` — IaC (Terraform, etc.) and security policies
+- `artifacts/` — build outputs, scan results, coverage reports
+- `example/` — example usages or demo projects
+- `codeowners` / `.github/CODEOWNERS` — ownership hints (project may include either)
+- `.github/workflows/` — CI and security workflows (template-ready; manual by default)
+- `.github/dependabot.yml` — dependency automation (Dependabot config)
 
-## Prettier Documentation
+Tech
+- This template is language-agnostic. Add your stack here (e.g., Node.js, Python, Go, Terraform).
 
-https://prettier.io/docs/en/configuration.html
+Table of Contents
+- [Quick structure](#quick-structure)
+- [Tech](#tech)
+- [Quick start](#quick-start)
+- [How to enable CI](#how-to-enable-ci)
+- [Security](#security)
+- [Personas](#personas)
+- [Contributing](#contributing)
+- [Coding Standards](#coding-standards)
 
-## Terraform Documentation
+Security-first defaults
+- Workflows in this template are set to `workflow_dispatch` only (manual) — uncomment triggers for active projects.
+- Included example workflows: CodeQL, secret scanning, container scanning (Trivy), tfsec for IaC.
+- Dependabot configured to suggest updates (including GitHub Actions).
+- Keep secrets out of the repo and configure scanners in your CI for automated checks.
 
-https://terraform-docs.io/user-guide/configuration/
+Quick start
+1. Clone this repository: `git clone <repo>`
+2. Copy the template into a new repo or use this repo as a starter
+3. Edit `prompts/project-context.md`, `docs/runbooks/*`, and workflow steps to match your stack
+4. Enable or customize scanners and change workflow triggers from `workflow_dispatch` to automated triggers when ready
 
-## Gitlab Code Owners
+Contributing
+- This template is meant to be adapted. Open a PR or edit files directly to match your team conventions.
 
-https://docs.gitlab.com/ee/user/project/code_owners.html
+How to enable CI
+1. Workflows in this template are manual by default (`workflow_dispatch`). To enable automated CI, edit the workflow file (in `.github/workflows/`) and replace the `on:` block. Example — replace this manual block:
 
-## Code Quality
+```yaml
+on:
+	workflow_dispatch:
+```
 
-- [SonarQube](https://docs.sonarqube.org/latest/analyzing-source-code/scanners/sonarscanner/)
+with automated triggers like:
 
-## Threat Modeling / Diagram
+```yaml
+on:
+	push:
+		branches: [ main ]
+	pull_request:
+```
 
-- [Threat Modeling](https://threatdragon.github.io/)
-- [diagrams.net](https://www.diagrams.net/doc/#get-started-with-diagramsnet)
+2. Commit the change and push — the workflow will then run on push/PR events.
 
-## Collaborate with your team
+Security
+- Add a `SECURITY.md` to define how to report vulnerabilities.
+- Workflows include CodeQL, secret scanning, container scanning, and tfsec examples — run them manually first to tune rules.
+- Keep secrets out of the repo and store credentials in GitHub Secrets or a secrets manager.
 
-If there are things you dont want, feel free to remove. If you believe this project should be changed, feel free to make an MR.
+Contributing
+- This template is meant to be adapted. Open a PR or edit files directly to match your team conventions.
 
-## How to use this project
+Coding Standards
+- Task: Return a concise list of project coding standards covering formatting, linting, testing, and key security checks.
+- Output: short bullet list of explicit rules.
 
-1. Clone this repository locally
-2. Create a new repository at https://gitlab.com/{group}/security
-3. Clone the new repository locally
-4. Copy these files from this project to your cloned new repository
-5. Commit your changes
+Personas
+- This repo includes a set of stakeholder personas you can use in prompts and runbooks to guide AI responses and troubleshooting tone.
+- Location: `prompts/personas/` — each persona is a short markdown file (e.g., `boss.md`, `cynic.md`).
 
-## Authors and acknowledgment
+Quick example
+```text
+You are the "boss" persona. Explain the business impact of adding an automated patching pipeline in three bullets.
+```
 
-@stevencarlson
+Contacts
+- Maintainer: @stevencarlson
 
-## Project status
+License
+- See `LICENSE` in the repository.
 
-This is only the beginning of the project. This project will be a living example of the gitlab standard.
+Further reading
+- Threat modeling: https://owasp.org/www-project-threat-modeling/
+- 12-factor apps: https://12factor.net/

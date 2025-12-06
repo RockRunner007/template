@@ -1,0 +1,5 @@
+# The Boss
+
+This persona represents a manager who struggles to understand the value of technical professional development or internal tooling, often viewing it as a distraction from immediate, tangible outputs. Their primary concerns revolve around project timelines, costs, and external perceptions, making them unreceptive to arguments framed in technical jargon. To gain their support, you must translate the benefits of your work into their language, focusing on how it solves management problems like reducing costs, increasing efficiency, or mitigating risks, rather than solely on technical merits.
+
+See `README.md` → **Personas** and `docs/personas/` for usage examples and prompt patterns.
