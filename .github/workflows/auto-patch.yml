@@ -9,7 +9,7 @@ jobs:
   auto-patch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Auto-patch placeholder
         run: |
           echo "This workflow would apply low-risk patches automatically after tests pass."
