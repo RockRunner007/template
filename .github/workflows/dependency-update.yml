@@ -9,7 +9,7 @@ jobs:
   dependency-update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Create dependency update report
         run: |
           echo "This workflow could create PRs or reports for dependency updates (integrate Renovate or Dependabot)."
