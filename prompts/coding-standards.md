@@ -18,4 +18,3 @@ Provide a concise list of project coding standards covering:
 - Performance: API responses <500ms p99, database queries <100ms
 - Accessibility: WCAG 2.1 AA compliance for UI components
 - PR review required from at least one code owner before merge
-
