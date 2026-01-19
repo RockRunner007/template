@@ -1,0 +1,106 @@
+name: Sync Specs to GitHub Wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'specs/**/*.md'
+      - 'docs/spec-integration/**'
+
+  workflow_dispatch:
+
+jobs:
+  sync-to-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Clone Wiki Repository
+        run: |
+          git clone https://github.com/${{ github.repository }}.wiki.git wiki
+          ls -la wiki/
+
+      - name: Copy Specs to Wiki
+        run: |
+          # Copy all spec markdown files to wiki
+          mkdir -p wiki/specs
+          
+          # Copy spec directories
+          for spec_dir in specs/*/; do
+            spec_name=$(basename "$spec_dir")
+            mkdir -p "wiki/specs/$spec_name"
+            
+            # Copy spec.md
+            if [ -f "$spec_dir/spec.md" ]; then
+              cp "$spec_dir/spec.md" "wiki/specs/$spec_name/Specification.md"
+            fi
+            
+            # Copy plan.md
+            if [ -f "$spec_dir/plan.md" ]; then
+              cp "$spec_dir/plan.md" "wiki/specs/$spec_name/Implementation-Plan.md"
+            fi
+            
+            # Copy contracts
+            if [ -d "$spec_dir/contracts" ]; then
+              mkdir -p "wiki/specs/$spec_name/Contracts"
+              cp "$spec_dir/contracts"/*.md "wiki/specs/$spec_name/Contracts/" 2>/dev/null || true
+            fi
+          done
+          
+          # Copy integration guides
+          cp -r docs/spec-integration/*.md wiki/Integration/ 2>/dev/null || mkdir -p wiki/Integration && cp docs/spec-integration/*.md wiki/Integration/ 2>/dev/null || true
+
+      - name: Create Wiki Index
+        run: |
+          cat > wiki/Home.md << 'EOF'
+          # Specifications Wiki
+          
+          Specification-Driven Development documentation and implementation guides.
+          
+          ## Quick Start
+          
+          - [[Spec Integration|Integration/tickets]]
+          - [[Tickets from Tasks|Integration/tickets]]
+          - [[Knowledge Base Options|Integration/knowledge-base]]
+          - [[Diagram Management|Integration/diagrams]]
+          
+          ## Specifications
+          
+          ### Example Specs
+          
+          - [[Authentication|specs/001-example/Specification]]
+          - [[Notifications|specs/002-notifications/Specification]]
+          - [[User Profile|specs/003-user-profile/Specification]]
+          
+          ## See Also
+          
+          - [GitHub Repository](../../)
+          - [Project Documentation](../../tree/main/docs)
+          EOF
+          
+          cat wiki/Home.md
+
+      - name: Commit and Push to Wiki
+        run: |
+          cd wiki
+          
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          
+          git add -A
+          
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to wiki"
+          else
+            git commit -m "Sync specs from main branch"
+            git push origin master
+            echo "✅ Wiki updated successfully"
+          fi
+
+      - name: Report Results
+        run: |
+          echo "## Specs Synced to Wiki ✅"
+          echo ""
+          echo "Updated files:"
+          cd wiki
+          git log -1 --name-status --format=%s
