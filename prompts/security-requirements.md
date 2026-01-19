@@ -17,4 +17,3 @@ Provide a concise bullet list of security requirements for code and infrastructu
 - Principle of least privilege for all service accounts and API tokens
 - Automated dependency scanning on all pull requests
 - Annual penetration testing and security assessments
-

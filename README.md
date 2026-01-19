@@ -13,6 +13,7 @@ A concise starter template for new services with security, docs, and CI best-pra
 - Includes placeholders for security scans, runbooks, and automation so security becomes part of the workflow.
 
 ## Quick structure
+
 - `_static/` — diagrams, threat models, deployment docs
 - `docs/runbooks/` — operational runbooks (deploy, rollback, incident response)
 - `prompts/` — AI prompts and project context for automated helpers
@@ -30,6 +31,7 @@ A concise starter template for new services with security, docs, and CI best-pra
 - This template is language-agnostic. Add your stack here (e.g., Node.js, Python, Go, Terraform).
 
 ## Table of Contents
+
 - [Quick structure](#quick-structure)
 - [Tech](#tech)
 - [Quick start](#quick-start)
@@ -47,12 +49,14 @@ A concise starter template for new services with security, docs, and CI best-pra
 - Keep secrets out of the repo and configure scanners in your CI for automated checks.
 
 ## Quick start
+
 1. Clone this repository: `git clone <repo>`
 2. Copy the template into a new repo or use this repo as a starter
 3. Edit `prompts/project-context.md`, `docs/runbooks/*`, and workflow steps to match your stack
 4. Enable or customize scanners and change workflow triggers from `workflow_dispatch` to automated triggers when ready
 
 How to enable CI
+
 1. Workflows in this template are manual by default (`workflow_dispatch`). To enable automated CI, edit the workflow file (in `.github/workflows/`) and replace the `on:` block. Example — replace this manual block:
 
 ```yaml
