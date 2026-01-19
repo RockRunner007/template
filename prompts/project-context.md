@@ -1,8 +1,17 @@
-
 # Project Context (AI template)
 
-Placeholders: PURPOSE, RUNTIME, FRAMEWORKS, INFRA, CONSTRAINTS
+## Placeholders
 
-Task: Return a short JSON object containing these fields filled from provided context.
+- PURPOSE
+- RUNTIME
+- FRAMEWORKS
+- INFRA
+- CONSTRAINTS
 
-Output: JSON with keys: purpose, runtime, frameworks, infra, constraints.
+## Task
+
+Return a short JSON object containing these fields filled from provided context.
+
+## Output
+
+JSON with keys: `purpose`, `runtime`, `frameworks`, `infra`, `constraints`.

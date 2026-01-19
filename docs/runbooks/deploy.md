@@ -1,15 +1,17 @@
 # Deploy Runbook
 
-Purpose: Steps to perform a manual deployment to production and verification checks.
+**Purpose:** Steps to perform a manual deployment to production and verification checks.
 
-Owner: Platform / Release Engineer
+**Owner:** Platform / Release Engineer
 
-Prerequisites:
+## Prerequisites
+
 - Access to deployment credentials and registry.
 - Relevant branch and CI artifacts built and available.
 - Runbook `docs/runbooks/rollback.md` reviewed before risky changes.
 
-Quick Steps:
+## Quick Steps
+
 1. Confirm the release artifact (tag/commit) and environment.
 2. Notify stakeholders (Slack/Email) about planned deploy window.
 3. From CI/CD, trigger deploy for tag/commit or run the deployment job.
@@ -17,14 +19,17 @@ Quick Steps:
 5. Run smoke tests and sanity checks.
 6. If issues found, follow `docs/runbooks/rollback.md`.
 
-Verification:
+## Verification
+
 - Application health endpoints return 200 within expected latency.
 - Key business transactions succeed in staging and production.
 - No increase in error budget alerts post-deploy.
 
-Post-deploy:
+## Post-deploy
+
 - Update release notes and close the release ticket.
 - Record any deviations and lessons in the post-mortem runbook.
 
-Notes for AI:
-- Use the matching AI prompt at `prompts/runbooks/deploy-prompt.md` to generate checklists and safe command snippets for deploys.
+## Notes for AI
+
+- Use the matching AI prompt at `prompts/deploy.md` to generate checklists and safe command snippets for deploys.
