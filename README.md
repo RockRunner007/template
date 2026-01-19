@@ -6,6 +6,7 @@
 ![License](https://img.shields.io/github/license/RockRunner007/template)
 
 A comprehensive project template for building production-ready services with:
+
 - **Specification-Driven Development** integration with example specs
 - **Comprehensive documentation** covering entire software development lifecycle
 - **Security-first CI/CD** with automated scanning and best practices
@@ -25,12 +26,14 @@ A comprehensive project template for building production-ready services with:
 ## Directory Structure
 
 ### Core Directories
+
 - `src/` — source code
 - `tst/` — unit, integration, and security-focused tests
 - `specs/` — specifications for features (specification-driven development)
 - `example/` — example implementations and demonstrations
 
 ### Documentation
+
 - `docs/` — comprehensive documentation covering entire SDLC
   - `docs/lifecycle/` — feature, release, and deprecation processes
   - `docs/governance/` — code review, change management, onboarding, dependencies
@@ -41,6 +44,7 @@ A comprehensive project template for building production-ready services with:
   - `docs/tools/` — tools documentation (repository analyzer, AI integration)
 
 ### Configuration & Operations
+
 - `_static/` — diagrams, threat models, deployment documentation
 - `infrastructure/` — IaC (Terraform, etc.) and security policies
 - `prompts/` — AI prompts and project context for automated helpers
@@ -48,6 +52,7 @@ A comprehensive project template for building production-ready services with:
 - `scripts/` — utility scripts (repository analyzer, etc.)
 
 ### Project Governance
+
 - `codeowners` / `.github/CODEOWNERS` — ownership hints
 - `.github/workflows/` — CI and security workflows (template-ready)
 - `.github/dependabot.yml` — dependency automation configuration
@@ -55,14 +60,7 @@ A comprehensive project template for building production-ready services with:
 
 ## Tech Stack
 
-This template is language and framework-agnostic. It provides best practices for:
-
-- **Languages:** Node.js, Python, Go, Rust, Java, .NET (examples included)
-- **Testing:** Unit, integration, E2E, security, and performance testing frameworks
-- **CI/CD:** GitHub Actions workflows for testing, building, and deployment
-- **Infrastructure:** Terraform/Bicep for IaC, multi-environment support (dev/staging/prod)
-- **Security:** SAST, DAST, secret scanning, dependency management
-- **Monitoring:** Observability stack (metrics, logs, traces, alerts)
+Language and framework-agnostic with best practices for Node.js, Python, Go, Rust, Java, .NET, and more. Includes GitHub Actions workflows, infrastructure as code, security scanning, and observability tooling.
 
 ## Table of Contents
 
@@ -140,15 +138,9 @@ This template includes complete spec-kit integration:
 
 ### Example Specs
 
-1. **Authentication** (`specs/001-example/`) — Complete working example
-   - Feature overview and acceptance criteria
-   - Endpoints specification
-   - Events and data model
-   - Task breakdown with effort estimates
-   - API contracts with examples
-
-2. **Notifications** (`specs/002-notifications/`) — Real-world spec
-3. **User Profile** (`specs/003-user-profile/`) — Multi-feature spec
+- **Authentication** (`specs/001-example/`) — Complete working example
+- **Notifications** (`specs/002-notifications/`) — Real-world example
+- **User Profile** (`specs/003-user-profile/`) — Multi-feature example
 
 ### Getting Started with Specs
 
@@ -158,8 +150,6 @@ This template includes complete spec-kit integration:
 4. Create knowledge base entries with [KB Guide](docs/spec-integration/knowledge-base.md)
 
 ## Documentation
-
-Key documentation files:
 
 | Topic | Location |
 |-------|----------|
@@ -221,8 +211,6 @@ Recommendations for Improvement:
 - ✅ Node.js or Python (no dependencies)
 
 See [docs/tools/QUICK-START.md](docs/tools/QUICK-START.md) for full guide.
-
-## CI/CD Workflows
 
 ## Getting Started
 
@@ -328,13 +316,13 @@ See [docs/personas/](docs/personas/) for details.
 
 ## Resources
 
-### Documentation
+**Documentation:**
 - [Specification-Driven Development Integration](docs/spec-integration/readme.md)
 - [Complete Documentation Index](docs/)
 - [Repository Analyzer Guide](docs/tools/QUICK-START.md)
 - [AI Integration Examples](docs/tools/ai-integration.md)
 
-### External References
+**External:**
 - [Spec-Kit](https://github.com/github/spec-kit) — GitHub's spec-driven development format
 - [GitHub Best Practices](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features)
 - [GitHub Security](https://docs.github.com/en/code-security)
