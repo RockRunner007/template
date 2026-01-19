@@ -1,25 +1,22 @@
 # Secrets Management — AI Prompt Template
 
-Context:
+## Context
+
 - Runbook: `docs/runbooks/secrets-management.md`
 
-Prompt Template:
+## Placeholders
 
-You are a security engineer tasked with remediating an exposed secret.
+- SECRET_IDENTIFIER (e.g., AWS access key, API token)
+- LOCATION (where the secret was found - repo path, logs, paste site)
+- SCOPE (optional - systems/services using the secret)
 
-Inputs (replace placeholders):
-- SECRET_IDENTIFIER: e.g., AWS access key, API token
-- LOCATION: where the secret was found (repo path, logs, paste site)
-- SCOPE: systems/services using the secret
+## Task
 
-# Secrets Management (AI template)
+Return an ordered remediation plan (revoke/rotate, update services, verify), one-line non-destructive search suggestions, and an incident opening message.
 
-Placeholders:
-- SECRET_IDENTIFIER
-- LOCATION
-- SCOPE (optional)
+## Output
 
-Task: Return an ordered remediation plan (revoke/rotate, update services, verify), one-line non-destructive search suggestions, and an incident opening message.
-
-Output: ordered steps, one-line commands, incident message.
-Emphasize fast revocation, minimal blast radius, and preserving evidence for post-incident analysis.
+- Ordered remediation steps
+- One-line commands for searching and verification
+- Incident opening message
+- Emphasize fast revocation, minimal blast radius, and preserving evidence for post-incident analysis
