@@ -51,7 +51,7 @@ jobs:
           done
 
       - name: Upload Diagram Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: exported-diagrams
           path: specs/**/diagrams/**/*.{png,svg}
