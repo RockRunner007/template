@@ -96,7 +96,7 @@ jobs:
 
       - name: Create PR with Diagrams (Optional)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         with:
           script: |
             console.log('Diagram export completed');
