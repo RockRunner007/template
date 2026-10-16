@@ -12,7 +12,7 @@ jobs:
   security-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run basic security checks (placeholder)
         run: |
           echo "Run security scanners here (Snyk/Trivy/CodeQL)"
